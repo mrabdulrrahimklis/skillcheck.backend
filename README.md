@@ -75,7 +75,7 @@ npx migrate reset
 yarn test
 ```
 
-### Your Notes Below Here
+## Your Notes Below Here
 
 - Done tasks with NotImplementedException()
 - Packages as I get request of this task focus was to work in this env and I tried to NOT install or update any of dependency but Prisma have great improvements in new version especially for Nested create data so thats reason why I used 
@@ -125,16 +125,13 @@ const result = await prisma.user.create({
 - on findMany users Request there is now excluded soft deleted users but there is flag that can be changed to get all users including soft delete but soft deleted users will not have Credentials
 - test are added in Postman but also in code with Jest for several services functions but for controler just there is old tests that show service and controler are there
 
-## Improvnments
+### Improvnments
 
 - I wish to use here some packages for generating Classes from `prisma.schema` that will speed up development once when then generic is done: [Class Generator]("https://www.npmjs.com/package/prisma-class-generator")
-<br>
-https://www.npmjs.com/package/prisma-class-generator
 - It will be great to use some `prisma-filter` that help us in filtering data but also provide readable link for loading data: [Prisma Filter]("https://github.com/chax-at/prisma-filter")
-<br> https://github.com/chax-at/prisma-filter
-- Let's try to use Node 18 as Node 14 will be soon deprecated 
+- Let's try to use Node18 as Node14 will be soon deprecated and it will be hard handle all packages, once I didn't update packages as task request to work in that environment but will be great to fix that
 
-Postman collection in file Keleya Klis.postman_collection.json
+### Postman collection in file Keleya Klis.postman_collection.json
 
  ![createUser.png](/postman_test_picture/createUser.png)
  ![getToken.png](/postman_test_picture/getToken.png)
