@@ -10,6 +10,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './common/strategies/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { AppController } from './app.controller';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { AppController } from './app.controller';
         },
       }),
     }),
+    HealthModule,
   ],
   controllers: [AppController, UserController],
   providers: [

@@ -74,6 +74,10 @@ yarn
 npx migrate reset
 yarn test
 ```
+
 ### Your Notes Below Here
 
 ...
+
+Deleted validators folder as I will alwys use something like Zod or Yup for validation in services and in classes there is Class-Validator in NestJS Documentation
+There is included Swagger documentation

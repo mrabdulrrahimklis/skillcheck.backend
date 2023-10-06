@@ -1,8 +1,8 @@
 import { Catch, HttpStatus } from '@nestjs/common';
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
+import { PrismaClientKnownRequestError, PrismaClientUnknownRequestError } from "@prisma/client/runtime";
 import { Request } from 'express';
 
-@Catch(PrismaClientKnownRequestError)
+@Catch(PrismaClientKnownRequestError, PrismaClientUnknownRequestError)
 export class QueryExceptionFilter {
   catch(exception: PrismaClientKnownRequestError, host) {
     const name = exception.name;
@@ -16,6 +16,10 @@ export class QueryExceptionFilter {
     switch (errorCode) {
       case 'P2002':
         message = 'Unique Constraint Error';
+        break;
+
+      case 'P2018':
+        message = 'Not found!';
         break;
     }
 
