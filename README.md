@@ -128,7 +128,11 @@ const result = await prisma.user.create({
 ## Improvnments
 
 - I wish to use here some packages for generating Classes from `prisma.schema` that will speed up development once when then generic is done: [Class Generator]("https://www.npmjs.com/package/prisma-class-generator")
+<br>
+https://www.npmjs.com/package/prisma-class-generator
 - It will be great to use some `prisma-filter` that help us in filtering data but also provide readable link for loading data: [Prisma Filter]("https://github.com/chax-at/prisma-filter")
+<br> https://github.com/chax-at/prisma-filter
+- Let's try to use Node 18 as Node 14 will be soon deprecated 
 
 Postman collection in file Keleya Klis.postman_collection.json
 
