@@ -130,6 +130,7 @@ const result = await prisma.user.create({
 - I wish to use here some packages for generating Classes from `prisma.schema` that will speed up development once when then generic is done: [Class Generator]("https://www.npmjs.com/package/prisma-class-generator")
 - It will be great to use some `prisma-filter` that help us in filtering data but also provide readable link for loading data: [Prisma Filter]("https://github.com/chax-at/prisma-filter")
 - Let's try to use Node18 as Node14 will be soon deprecated and it will be hard handle all packages, once I didn't update packages as task request to work in that environment but will be great to fix that
+- Last thing I wish to include is issue on [RejectOnNotFoundError]("https://github.com/prisma/prisma/discussions/9768") and that's why some of errors are handled by myself but will be great to make some util function that handle error and error messages as your organization needs as I tried to send reject on prisma create or get if some value is not OK and then prisma don't have case for that error in his errors but return some Internal Error. My current project have Prisma and NestJS and we have last version of Prisma and there is more powerful options.
 
 ### Postman collection in file Keleya Klis.postman_collection.json
 
