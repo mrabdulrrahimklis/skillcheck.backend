@@ -87,8 +87,6 @@ export class UserController {
 
   @Post('token')
   async userGetToken(@Body() authenticateUserDto: AuthenticateUserDto) {
-    console.log('auttt', authenticateUserDto);
-
     return this.usersService.authenticateAndGetJwtToken(authenticateUserDto);
   }
 }

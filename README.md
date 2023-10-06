@@ -77,7 +77,62 @@ yarn test
 
 ### Your Notes Below Here
 
-...
+- Done tasks with NotImplementedException()
+- Packages as I get request of this task focus was to work in this env and I tried to NOT install or update any of dependency but Prisma have great improvements in new version especially for Nested create data so thats reason why I used 
+```
+  async create(createUserDto: CreateUserDto) {
+    const { Credentials, ...rest } = createUserDto;
 
-Deleted validators folder as I will alwys use something like Zod or Yup for validation in services and in classes there is Class-Validator in NestJS Documentation
-There is included Swagger documentation
+    const hash = await hashPassword(Credentials.hash);
+    const credentials = await this.prisma.credentials.create({ data: { hash } });
+
+    try {
+      return this.prisma.user.create({
+        data: {
+          ...rest,
+          credentials_id: credentials.id,
+        },
+      });
+    } catch (e) {
+      this.prisma.credentials.delete({ where: { id: credentials.id } });
+
+      throw new HttpException('Bad request.', HttpStatus.BAD_REQUEST);
+    }
+  }
+```
+instead of using something like this from documentation
+```
+const result = await prisma.user.create({
+  data: {
+    email: 'elsa@prisma.io',
+    name: 'Elsa Prisma',
+    posts: {
+      create: [
+        { title: 'How to make an omelette' },
+        { title: 'How to eat an omelette' },
+      ],
+    },
+  },
+  include: {
+    posts: true, // Include all posts in the returned object
+  },
+})
+```
+- in some deep validation including this class validator I will also include `Zod` or `Yup` validators in my project because that gives us new level of validation in services also
+- Swagger documentation is now fixed and generated and I made bit of refactoring of `main.ts` file and refactor some functions
+- As I was working on multiple NestJS projects I wish to maybe always have separated models and modular project architecture then I'll be able to speed up on some other projects and reuse some logic from previous projects and have some sub-repository
+- Whole Query exception filter here is just focused on one case and it will be great to better handle it
+- on findMany users Request there is now excluded soft deleted users but there is flag that can be changed to get all users including soft delete but soft deleted users will not have Credentials
+- test are added in Postman but also in code with Jest for several services functions but for controler just there is old tests that show service and controler are there
+
+## Improvnments
+
+- I wish to use here some packages for generating Classes from `prisma.schema` that will speed up development once when then generic is done: [Class Generator]("https://www.npmjs.com/package/prisma-class-generator")
+- It will be great to use some `prisma-filter` that help us in filtering data but also provide readable link for loading data: [Prisma Filter]("https://github.com/chax-at/prisma-filter")
+
+Postman collection in file Keleya Klis.postman_collection.json
+
+ ![createUser.png](/postman_test_picture/createUser.png)
+ ![getToken.png](/postman_test_picture/getToken.png)
+ ![userById.png](/postman_test_picture/userById.png)
+ ![userUpdate.png](/postman_test_picture/userUpdate.png)
