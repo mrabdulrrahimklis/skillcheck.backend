@@ -127,6 +127,7 @@ const result = await prisma.user.create({
 
 ### Improvnments
 
+- In my case is better to use NestJS decorators for API descriptions instead of JSDoc
 - I wish to use here some packages for generating Classes from `prisma.schema` that will speed up development once when then generic is done: [Class Generator]("https://www.npmjs.com/package/prisma-class-generator")
 - It will be great to use some `prisma-filter` that help us in filtering data but also provide readable link for loading data: [Prisma Filter]("https://github.com/chax-at/prisma-filter")
 - Let's try to use Node18 as Node14 will be soon deprecated and it will be hard handle all packages, once I didn't update packages as task request to work in that environment but will be great to fix that
